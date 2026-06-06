@@ -7,6 +7,9 @@ package Formularios;
 import Clases.CConexion;
 import java.sql.Connection;
 import javax.swing.JOptionPane;
+import Clases.CUsuario;
+import Clases.UsuarioDAO;
+import Formularios.MenuPrincipal;
 
 /**
  *
@@ -19,6 +22,8 @@ public class LogInForm extends javax.swing.JFrame {
      */
     public LogInForm() {
         initComponents();
+        setLocationRelativeTo(null);
+        setResizable(false);
     }
 
     /**
@@ -32,23 +37,33 @@ public class LogInForm extends javax.swing.JFrame {
 
         labelTitulo = new javax.swing.JLabel();
         labelUsuario = new javax.swing.JLabel();
-        textFieldUsuario = new javax.swing.JTextField();
+        txtUsuario = new javax.swing.JTextField();
         labelContrasenia = new javax.swing.JLabel();
-        passwordFieldContrasenia = new javax.swing.JPasswordField();
+        txtContrasena = new javax.swing.JPasswordField();
         btnIngresar = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        labelTitulo.setText("Sistema Hotelero");
+        labelTitulo.setFont(new java.awt.Font("Arial", 1, 22)); // NOI18N
+        labelTitulo.setText("Sistema de Gestión Hotelera");
 
         labelUsuario.setText("Usuario:");
 
+        txtUsuario.setPreferredSize(new java.awt.Dimension(240, 30));
+
         labelContrasenia.setText("Contraseña:");
 
-        passwordFieldContrasenia.setText("jPasswordField1");
+        txtContrasena.setPreferredSize(new java.awt.Dimension(240, 30));
+        txtContrasena.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtContrasenaActionPerformed(evt);
+            }
+        });
 
         btnIngresar.setText("Ingresar");
+        btnIngresar.setPreferredSize(new java.awt.Dimension(120, 35));
         btnIngresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnIngresarActionPerformed(evt);
@@ -56,47 +71,59 @@ public class LogInForm extends javax.swing.JFrame {
         });
 
         btnSalir.setText("Salir");
+        btnSalir.setPreferredSize(new java.awt.Dimension(120, 35));
+
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel1.setText("Inicio de sesión");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(67, 67, 67)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(155, 155, 155)
-                        .addComponent(labelTitulo))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(100, 100, 100)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(txtUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtContrasena, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnIngresar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
-                                .addComponent(btnSalir))
-                            .addComponent(labelUsuario)
-                            .addComponent(textFieldUsuario)
+                                .addComponent(labelTitulo)
+                                .addGap(0, 21, Short.MAX_VALUE))
+                            .addComponent(jLabel1))
+                        .addContainerGap(46, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(labelContrasenia)
-                            .addComponent(passwordFieldContrasenia))))
-                .addContainerGap(121, Short.MAX_VALUE))
+                            .addComponent(labelUsuario))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(btnIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(48, 48, 48))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(labelTitulo)
-                .addGap(42, 42, 42)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel1)
+                .addGap(15, 15, 15)
                 .addComponent(labelUsuario)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(textFieldUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38)
                 .addComponent(labelContrasenia)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(passwordFieldContrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnIngresar)
-                    .addComponent(btnSalir))
-                .addContainerGap(61, Short.MAX_VALUE))
+                    .addComponent(btnIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
 
         pack();
@@ -104,19 +131,25 @@ public class LogInForm extends javax.swing.JFrame {
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
         // TODO add your handling code here:
-    CConexion conexion = new CConexion();
+    String usuarioTexto = txtUsuario.getText();
+    String contrasenaTexto = new String(txtContrasena.getPassword());
 
-    Connection con = conexion.estableceConexion();
+    UsuarioDAO dao = new UsuarioDAO();
+    CUsuario usuario = dao.iniciarSesion(usuarioTexto, contrasenaTexto);
 
-    if(con != null){
-        JOptionPane.showMessageDialog(this,
-                "Conectado correctamente");
-    }else{
-        JOptionPane.showMessageDialog(this,
-                "No se pudo conectar");
+    if (usuario != null) {
+        MenuPrincipal menu = new MenuPrincipal(usuario);
+        menu.setVisible(true);
+        this.dispose();
+    } else {
+        JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos");
     }
 
     }//GEN-LAST:event_btnIngresarActionPerformed
+
+    private void txtContrasenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContrasenaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtContrasenaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -156,10 +189,11 @@ public class LogInForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnIngresar;
     private javax.swing.JButton btnSalir;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel labelContrasenia;
     private javax.swing.JLabel labelTitulo;
     private javax.swing.JLabel labelUsuario;
-    private javax.swing.JPasswordField passwordFieldContrasenia;
-    private javax.swing.JTextField textFieldUsuario;
+    private javax.swing.JPasswordField txtContrasena;
+    private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }
