@@ -84,9 +84,8 @@ INSERT INTO usuarios (
     estado
 )
 VALUES
-('admin', 'admin123', 'Administrador', 'Activo'),
-
-('recepcion1', 'recep123', 'Recepcionista', 'Activo');
+('Admin', 'Admin123', 'Administrador', 'Activo'),
+('Recepcionista', 'Recepcionista123', 'Recepcionista', 'Activo');
 
 
 /* ---------------------------------------------------------
