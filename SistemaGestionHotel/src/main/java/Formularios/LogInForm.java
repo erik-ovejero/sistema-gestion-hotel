@@ -4,6 +4,10 @@
  */
 package Formularios;
 
+import Clases.CConexion;
+import java.sql.Connection;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Monke
@@ -39,8 +43,6 @@ public class LogInForm extends javax.swing.JFrame {
         labelTitulo.setText("Sistema Hotelero");
 
         labelUsuario.setText("Usuario:");
-
-        textFieldUsuario.setText("jTextField1");
 
         labelContrasenia.setText("Contraseña:");
 
@@ -102,6 +104,18 @@ public class LogInForm extends javax.swing.JFrame {
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
         // TODO add your handling code here:
+    CConexion conexion = new CConexion();
+
+    Connection con = conexion.estableceConexion();
+
+    if(con != null){
+        JOptionPane.showMessageDialog(this,
+                "Conectado correctamente");
+    }else{
+        JOptionPane.showMessageDialog(this,
+                "No se pudo conectar");
+    }
+
     }//GEN-LAST:event_btnIngresarActionPerformed
 
     /**
