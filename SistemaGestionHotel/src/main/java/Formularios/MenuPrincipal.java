@@ -227,6 +227,8 @@ public MenuPrincipal(CUsuario usuario) {
 
     private void btnCrearReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearReservaActionPerformed
         // TODO add your handling code here:
+        FormReservas form = new FormReservas();
+        form.setVisible(true);
     }//GEN-LAST:event_btnCrearReservaActionPerformed
 
     private void btnRegistrarHuespedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarHuespedActionPerformed
