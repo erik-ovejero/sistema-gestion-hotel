@@ -72,6 +72,11 @@ public class LogInForm extends javax.swing.JFrame {
 
         btnSalir.setText("Salir");
         btnSalir.setPreferredSize(new java.awt.Dimension(120, 35));
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel1.setText("Inicio de sesión");
@@ -88,9 +93,10 @@ public class LogInForm extends javax.swing.JFrame {
                             .addComponent(txtUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtContrasena, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(labelTitulo)
-                                .addGap(0, 21, Short.MAX_VALUE))
-                            .addComponent(jLabel1))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                                    .addComponent(labelTitulo)
+                                    .addComponent(jLabel1))
+                                .addGap(0, 21, Short.MAX_VALUE)))
                         .addContainerGap(46, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -150,6 +156,21 @@ public class LogInForm extends javax.swing.JFrame {
     private void txtContrasenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContrasenaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtContrasenaActionPerformed
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        // TODO add your handling code here:
+        int opcion = JOptionPane.showConfirmDialog(
+                this,
+                "¿Desea salir del sistema?",
+                "Confirmar salida",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE
+        );
+
+        if (opcion == JOptionPane.YES_OPTION) {
+            System.exit(0);
+        }
+    }//GEN-LAST:event_btnSalirActionPerformed
 
     /**
      * @param args the command line arguments
