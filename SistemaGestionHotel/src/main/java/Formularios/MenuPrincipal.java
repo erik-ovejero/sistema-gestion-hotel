@@ -225,6 +225,8 @@ public MenuPrincipal(CUsuario usuario) {
 
     private void btnReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportesActionPerformed
         // TODO add your handling code here:
+        FormReportes form = new FormReportes();
+        form.setVisible(true);
     }//GEN-LAST:event_btnReportesActionPerformed
 
     private void btnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesionActionPerformed
