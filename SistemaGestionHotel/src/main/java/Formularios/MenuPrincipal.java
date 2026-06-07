@@ -74,6 +74,11 @@ public MenuPrincipal(CUsuario usuario) {
         btnRegistrarHuesped.setMaximumSize(null);
         btnRegistrarHuesped.setMinimumSize(new java.awt.Dimension(120, 25));
         btnRegistrarHuesped.setPreferredSize(new java.awt.Dimension(220, 35));
+        btnRegistrarHuesped.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarHuespedActionPerformed(evt);
+            }
+        });
 
         btnCrearReserva.setText("Crear Reserva");
         btnCrearReserva.setPreferredSize(new java.awt.Dimension(220, 35));
@@ -221,6 +226,12 @@ public MenuPrincipal(CUsuario usuario) {
     private void btnCrearReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearReservaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCrearReservaActionPerformed
+
+    private void btnRegistrarHuespedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarHuespedActionPerformed
+        // TODO add your handling code here:
+        FormHuespedes form = new FormHuespedes();
+        form.setVisible(true);
+    }//GEN-LAST:event_btnRegistrarHuespedActionPerformed
 
     /**
      * @param args the command line arguments
