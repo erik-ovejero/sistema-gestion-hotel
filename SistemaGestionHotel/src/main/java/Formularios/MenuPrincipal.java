@@ -210,6 +210,8 @@ public MenuPrincipal(CUsuario usuario) {
 
     private void btnAdministrarHabitacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdministrarHabitacionesActionPerformed
         // TODO add your handling code here:
+        FormHabitaciones form = new FormHabitaciones();
+        form.setVisible(true);
     }//GEN-LAST:event_btnAdministrarHabitacionesActionPerformed
 
     private void btnReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportesActionPerformed
