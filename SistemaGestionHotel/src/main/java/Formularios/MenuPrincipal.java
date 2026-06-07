@@ -114,6 +114,11 @@ public MenuPrincipal(CUsuario usuario) {
 
         btnGestionarUsuarios.setText("Gestionar usuarios");
         btnGestionarUsuarios.setPreferredSize(new java.awt.Dimension(220, 35));
+        btnGestionarUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGestionarUsuariosActionPerformed(evt);
+            }
+        });
 
         btnReportes.setText("Reportes");
         btnReportes.setPreferredSize(new java.awt.Dimension(220, 35));
@@ -202,10 +207,14 @@ public MenuPrincipal(CUsuario usuario) {
 
     private void btnEmitirFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmitirFacturaActionPerformed
         // TODO add your handling code here:
+        FormFacturas form = new FormFacturas();
+        form.setVisible(true);
     }//GEN-LAST:event_btnEmitirFacturaActionPerformed
 
     private void btnRegistrarPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarPagoActionPerformed
         // TODO add your handling code here:
+        FormPagos form = new FormPagos();
+        form.setVisible(true);
     }//GEN-LAST:event_btnRegistrarPagoActionPerformed
 
     private void btnAdministrarHabitacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdministrarHabitacionesActionPerformed
@@ -236,6 +245,12 @@ public MenuPrincipal(CUsuario usuario) {
         FormHuespedes form = new FormHuespedes();
         form.setVisible(true);
     }//GEN-LAST:event_btnRegistrarHuespedActionPerformed
+
+    private void btnGestionarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionarUsuariosActionPerformed
+        // TODO add your handling code here:
+        FormUsuarios form = new FormUsuarios();
+        form.setVisible(true);
+    }//GEN-LAST:event_btnGestionarUsuariosActionPerformed
 
     /**
      * @param args the command line arguments
