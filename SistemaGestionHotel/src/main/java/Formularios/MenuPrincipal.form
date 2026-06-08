@@ -53,7 +53,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="lblTitulo" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jPanel1" max="32767" attributes="0"/>
+              <Component id="jPanel1" pref="534" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -82,15 +82,21 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="lblUsuario" alignment="0" min="-2" pref="220" max="-2" attributes="0"/>
-                      <Component id="btnAdministrarHabitaciones" linkSize="1" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnRegistrarHuesped" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnCrearReserva" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnRegistrarPago" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnEmitirFactura" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnGestionarUsuarios" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnReportes" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnCerrarSesion" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblUsuario" alignment="0" min="-2" pref="229" max="-2" attributes="0"/>
+                      <Component id="btnAdministrarHabitaciones" linkSize="1" max="32767" attributes="0"/>
+                      <Component id="btnRegistrarHuesped" linkSize="1" alignment="0" max="32767" attributes="0"/>
+                      <Component id="btnCrearReserva" linkSize="1" alignment="0" max="32767" attributes="0"/>
+                      <Component id="btnEmitirFactura" linkSize="1" alignment="0" max="32767" attributes="0"/>
+                      <Component id="btnGestionarUsuarios" linkSize="1" alignment="0" max="32767" attributes="0"/>
+                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="btnCheckInCheckOut" alignment="0" pref="0" max="32767" attributes="0"/>
+                          <Component id="btnConsultarDisponibilidad" alignment="0" pref="0" max="32767" attributes="0"/>
+                          <Component id="btnRegistrarPago" linkSize="1" alignment="0" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="btnCerrarSesion" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btnReportes" linkSize="1" alignment="0" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -103,19 +109,23 @@
                   <Component id="lblUsuario" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="btnRegistrarHuesped" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnCrearReserva" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="btnCheckInCheckOut" min="-2" pref="41" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="btnConsultarDisponibilidad" min="-2" pref="34" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnRegistrarPago" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnEmitirFactura" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnAdministrarHabitaciones" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnGestionarUsuarios" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnReportes" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="40" max="32767" attributes="0"/>
+                  <EmptySpace pref="55" max="32767" attributes="0"/>
                   <Component id="btnCerrarSesion" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -223,6 +233,28 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCerrarSesionActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnCheckInCheckOut">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Check in / Check out"/>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[229, 35]"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCheckInCheckOutActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnConsultarDisponibilidad">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Consultar Disponibilidad"/>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[229, 35]"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnConsultarDisponibilidadActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

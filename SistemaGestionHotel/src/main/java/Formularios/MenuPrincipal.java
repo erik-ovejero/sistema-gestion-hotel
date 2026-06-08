@@ -7,30 +7,30 @@ public class MenuPrincipal extends javax.swing.JFrame {
     /**
      * Creates new form MenuPrincipal
      */
-public MenuPrincipal(CUsuario usuario) {
+    public MenuPrincipal(CUsuario usuario) {
 
-    initComponents();
-    setLocationRelativeTo(null);
-    setResizable(false);
+        initComponents();
+        setLocationRelativeTo(null);
+        setResizable(false);
 
-    lblUsuario.setText(
-            "<html><center>"
-            + "<b>Usuario:</b> " + usuario.getNombreUsuario()
-            + "<br>"
-            + "<b>Rol:</b> " + usuario.getRol()
-            + "</center></html>");
-    lblUsuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblUsuario.setText(
+                "<html><center>"
+                + "<b>Usuario:</b> " + usuario.getNombreUsuario()
+                + "<br>"
+                + "<b>Rol:</b> " + usuario.getRol()
+                + "</center></html>");
+        lblUsuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
-    if (usuario.getRol().equals("Administrador")) {
+        if (usuario.getRol().equals("Administrador")) {
 
-        configurarMenuAdministrador();
+            configurarMenuAdministrador();
 
-    } else {
+        } else {
 
-        configurarMenuRecepcionista();
+            configurarMenuRecepcionista();
 
+        }
     }
-}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -53,6 +53,8 @@ public MenuPrincipal(CUsuario usuario) {
         btnGestionarUsuarios = new javax.swing.JButton();
         btnReportes = new javax.swing.JButton();
         btnCerrarSesion = new javax.swing.JButton();
+        btnCheckInCheckOut = new javax.swing.JButton();
+        btnConsultarDisponibilidad = new javax.swing.JButton();
 
         jButton1.setText("jButton1");
 
@@ -136,6 +138,22 @@ public MenuPrincipal(CUsuario usuario) {
             }
         });
 
+        btnCheckInCheckOut.setText("Check in / Check out");
+        btnCheckInCheckOut.setPreferredSize(new java.awt.Dimension(229, 35));
+        btnCheckInCheckOut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCheckInCheckOutActionPerformed(evt);
+            }
+        });
+
+        btnConsultarDisponibilidad.setText("Consultar Disponibilidad");
+        btnConsultarDisponibilidad.setPreferredSize(new java.awt.Dimension(229, 35));
+        btnConsultarDisponibilidad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultarDisponibilidadActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -143,15 +161,19 @@ public MenuPrincipal(CUsuario usuario) {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(63, 63, 63)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAdministrarHabitaciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnRegistrarHuesped, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCrearReserva, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnRegistrarPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEmitirFactura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnGestionarUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnReportes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAdministrarHabitaciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnRegistrarHuesped, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnCrearReserva, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnEmitirFactura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnGestionarUsuarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(btnCheckInCheckOut, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addComponent(btnConsultarDisponibilidad, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addComponent(btnRegistrarPago, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(btnCerrarSesion, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnReportes, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -164,19 +186,23 @@ public MenuPrincipal(CUsuario usuario) {
                 .addComponent(lblUsuario)
                 .addGap(18, 18, 18)
                 .addComponent(btnRegistrarHuesped, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnCrearReserva, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnCheckInCheckOut, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnConsultarDisponibilidad, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnRegistrarPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnEmitirFactura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnAdministrarHabitaciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnGestionarUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnReportes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
                 .addComponent(btnCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -198,7 +224,7 @@ public MenuPrincipal(CUsuario usuario) {
                 .addContainerGap()
                 .addComponent(lblTitulo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 534, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -254,6 +280,20 @@ public MenuPrincipal(CUsuario usuario) {
         form.setVisible(true);
     }//GEN-LAST:event_btnGestionarUsuariosActionPerformed
 
+    private void btnCheckInCheckOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCheckInCheckOutActionPerformed
+        // TODO add your handling code here:
+        FormCheckInOut form = new FormCheckInOut();
+        form.setVisible(true);
+    }//GEN-LAST:event_btnCheckInCheckOutActionPerformed
+
+    private void btnConsultarDisponibilidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarDisponibilidadActionPerformed
+        // TODO add your handling code here:
+        FormConsultarDisponibilidad ventana =
+        new FormConsultarDisponibilidad();
+
+        ventana.setVisible(true);
+    }//GEN-LAST:event_btnConsultarDisponibilidadActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -284,7 +324,7 @@ public MenuPrincipal(CUsuario usuario) {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-               // new MenuPrincipal().setVisible(true);
+                // new MenuPrincipal().setVisible(true);
             }
         });
     }
@@ -292,6 +332,8 @@ public MenuPrincipal(CUsuario usuario) {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdministrarHabitaciones;
     private javax.swing.JButton btnCerrarSesion;
+    private javax.swing.JButton btnCheckInCheckOut;
+    private javax.swing.JButton btnConsultarDisponibilidad;
     private javax.swing.JButton btnCrearReserva;
     private javax.swing.JButton btnEmitirFactura;
     private javax.swing.JButton btnGestionarUsuarios;
@@ -304,26 +346,26 @@ public MenuPrincipal(CUsuario usuario) {
     private javax.swing.JLabel lblUsuario;
     // End of variables declaration//GEN-END:variables
 
-private void configurarMenuAdministrador() {
-    btnRegistrarHuesped.setVisible(true);
-    btnCrearReserva.setVisible(true);
-    btnRegistrarPago.setVisible(true);
-    btnEmitirFactura.setVisible(true);
+    private void configurarMenuAdministrador() {
+        btnRegistrarHuesped.setVisible(true);
+        btnCrearReserva.setVisible(true);
+        btnRegistrarPago.setVisible(true);
+        btnEmitirFactura.setVisible(true);
 
-    btnAdministrarHabitaciones.setVisible(true);
-    btnGestionarUsuarios.setVisible(true);
-    btnReportes.setVisible(true);
-}
+        btnAdministrarHabitaciones.setVisible(true);
+        btnGestionarUsuarios.setVisible(true);
+        btnReportes.setVisible(true);
+    }
 
-private void configurarMenuRecepcionista() {
-    btnRegistrarHuesped.setVisible(true);
-    btnCrearReserva.setVisible(true);
-    btnRegistrarPago.setVisible(true);
-    btnEmitirFactura.setVisible(true);
+    private void configurarMenuRecepcionista() {
+        btnRegistrarHuesped.setVisible(true);
+        btnCrearReserva.setVisible(true);
+        btnRegistrarPago.setVisible(true);
+        btnEmitirFactura.setVisible(true);
 
-    btnAdministrarHabitaciones.setVisible(false);
-    btnGestionarUsuarios.setVisible(false);
-    btnReportes.setVisible(false);
-}
+        btnAdministrarHabitaciones.setVisible(false);
+        btnGestionarUsuarios.setVisible(false);
+        btnReportes.setVisible(false);
+    }
 
 }
