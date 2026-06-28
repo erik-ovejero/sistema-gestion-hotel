@@ -309,6 +309,7 @@ public class FormPagos extends javax.swing.JFrame {
 
                 dao.eliminarPago(Integer.parseInt(txtIdPago.getText()));
                 dao.mostrarPagos(tbPagos);
+                dao.cargarReservas(cbReservaPago);
 
                 limpiarCamposPago();
             }
@@ -353,6 +354,7 @@ public class FormPagos extends javax.swing.JFrame {
             CPagoDAO dao = new CPagoDAO();
             dao.guardarPago(pago);
             dao.mostrarPagos(tbPagos);
+            dao.cargarReservas(cbReservaPago);
 
             limpiarCamposPago();
 
@@ -370,6 +372,9 @@ public class FormPagos extends javax.swing.JFrame {
         txtIdPago.setText(tbPagos.getValueAt(fila, 0).toString());
 
         int idReserva = Integer.parseInt(tbPagos.getValueAt(fila, 1).toString());
+
+        CPagoDAO dao = new CPagoDAO();
+        dao.cargarReservas(cbReservaPago, idReserva);
         seleccionarItemComboPorId(cbReservaPago, idReserva);
 
         dtFechaPago.setDate((java.util.Date) tbPagos.getValueAt(fila, 5));
@@ -400,6 +405,7 @@ public class FormPagos extends javax.swing.JFrame {
             CPagoDAO dao = new CPagoDAO();
             dao.modificarPago(pago);
             dao.mostrarPagos(tbPagos);
+            dao.cargarReservas(cbReservaPago);
 
             limpiarCamposPago();
 
