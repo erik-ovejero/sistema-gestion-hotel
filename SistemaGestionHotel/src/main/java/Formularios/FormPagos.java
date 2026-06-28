@@ -8,8 +8,11 @@ import Clases.CPago;
 import Clases.CPagoDAO;
 import Clases.ItemCombo;
 import javax.swing.JOptionPane;
+import Clases.CUsuario;
 
 public class FormPagos extends javax.swing.JFrame {
+
+    private CUsuario usuarioActual;
 
     public FormPagos() {
         initComponents();
@@ -35,6 +38,12 @@ public class FormPagos extends javax.swing.JFrame {
         dao.cargarReservas(cbReservaPago);
         dao.mostrarPagos(tbPagos);
     }
+
+    public FormPagos(CUsuario usuario) {
+        this();
+        this.usuarioActual = usuario;
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -403,6 +412,11 @@ public class FormPagos extends javax.swing.JFrame {
 
     private void btnVolverPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverPagoActionPerformed
         // TODO add your handling code here:
+        if (usuarioActual != null) {
+            MenuPrincipal menu = new MenuPrincipal(usuarioActual);
+            menu.setVisible(true);
+        }
+
         this.dispose();
     }//GEN-LAST:event_btnVolverPagoActionPerformed
 

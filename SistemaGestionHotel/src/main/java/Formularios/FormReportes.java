@@ -6,8 +6,11 @@ package Formularios;
 
 import Clases.CReporteDAO;
 import javax.swing.JOptionPane;
+import Clases.CUsuario;
 
 public class FormReportes extends javax.swing.JFrame {
+
+    private CUsuario usuarioActual;
 
     public FormReportes() {
         initComponents();
@@ -23,6 +26,12 @@ public class FormReportes extends javax.swing.JFrame {
         txtPorcentajeOcupacion.setEditable(false);
         txtMontoGenerado.setEditable(false);
     }
+
+    public FormReportes(CUsuario usuario) {
+        this();
+        this.usuarioActual = usuario;
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -294,6 +303,11 @@ public class FormReportes extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        if (usuarioActual != null) {
+            MenuPrincipal menu = new MenuPrincipal(usuarioActual);
+            menu.setVisible(true);
+        }
+
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 

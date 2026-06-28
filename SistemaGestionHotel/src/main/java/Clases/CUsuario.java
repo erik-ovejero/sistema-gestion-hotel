@@ -26,6 +26,29 @@ public class CUsuario {
         this.estado = estado;
     }
 
+    // Metodo pensado para aplicar polimorfismo.
+    // Las clases hijas CAdministrador y CRecepcionista lo sobrescriben.
+    public String obtenerTipoUsuario() {
+        return "Usuario";
+    }
+
+    // Permisos generales. Las clases hijas pueden sobrescribirlos.
+    public boolean puedeGestionarUsuarios() {
+        return false;
+    }
+
+    public boolean puedeVerReportes() {
+        return false;
+    }
+
+    public boolean puedeGestionarReservas() {
+        return false;
+    }
+
+    public boolean puedeEmitirFacturas() {
+        return false;
+    }
+
     public int getIdUsuario() {
         return idUsuario;
     }

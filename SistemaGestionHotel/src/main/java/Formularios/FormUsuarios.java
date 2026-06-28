@@ -10,6 +10,8 @@ import javax.swing.JOptionPane;
 
 public class FormUsuarios extends javax.swing.JFrame {
 
+    private CUsuario usuarioActual;
+
     public FormUsuarios() {
         initComponents();
         setLocationRelativeTo(null);
@@ -29,6 +31,12 @@ public class FormUsuarios extends javax.swing.JFrame {
         CUsuarioDAO dao = new CUsuarioDAO();
         dao.mostrarUsuarios(tbUsuarios);
     }
+
+    public FormUsuarios(CUsuario usuario) {
+        this();
+        this.usuarioActual = usuario;
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -399,6 +407,11 @@ public class FormUsuarios extends javax.swing.JFrame {
 
     private void btnVolverUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverUsuarioActionPerformed
         // TODO add your handling code here:
+        if (usuarioActual != null) {
+            MenuPrincipal menu = new MenuPrincipal(usuarioActual);
+            menu.setVisible(true);
+        }
+
         this.dispose();
     }//GEN-LAST:event_btnVolverUsuarioActionPerformed
 

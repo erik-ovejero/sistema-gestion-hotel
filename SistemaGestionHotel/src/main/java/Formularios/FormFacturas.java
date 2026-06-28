@@ -6,8 +6,11 @@ import Clases.ItemCombo;
 import javax.swing.JOptionPane;
 import Clases.CFacturaPDF;
 import javax.swing.JOptionPane;
+import Clases.CUsuario;
 
 public class FormFacturas extends javax.swing.JFrame {
+
+    private CUsuario usuarioActual;
 
     public FormFacturas() {
         initComponents();
@@ -33,6 +36,12 @@ public class FormFacturas extends javax.swing.JFrame {
 
         btnExportarPdf.setEnabled(false);
     }
+
+    public FormFacturas(CUsuario usuario) {
+        this();
+        this.usuarioActual = usuario;
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -421,6 +430,11 @@ public class FormFacturas extends javax.swing.JFrame {
 
     private void btnVolverFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverFacturaActionPerformed
         // TODO add your handling code here:
+        if (usuarioActual != null) {
+            MenuPrincipal menu = new MenuPrincipal(usuarioActual);
+            menu.setVisible(true);
+        }
+
         this.dispose();
     }//GEN-LAST:event_btnVolverFacturaActionPerformed
 

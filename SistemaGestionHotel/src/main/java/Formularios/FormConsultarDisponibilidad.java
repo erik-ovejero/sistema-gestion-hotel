@@ -6,8 +6,11 @@ package Formularios;
 
 import Clases.CDisponibilidadDAO;
 import javax.swing.JOptionPane;
+import Clases.CUsuario;
 
 public class FormConsultarDisponibilidad extends javax.swing.JFrame {
+
+    private CUsuario usuarioActual;
 
     /**
      * Creates new form FormConsultarDisponibilidad
@@ -19,6 +22,12 @@ public class FormConsultarDisponibilidad extends javax.swing.JFrame {
         setTitle("Consultar Disponibilidad");
 
     }
+
+    public FormConsultarDisponibilidad(CUsuario usuario) {
+        this();
+        this.usuarioActual = usuario;
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -193,6 +202,11 @@ public class FormConsultarDisponibilidad extends javax.swing.JFrame {
 
     private void VolverDisponibilidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VolverDisponibilidadActionPerformed
         // TODO add your handling code here:
+        if (usuarioActual != null) {
+            MenuPrincipal menu = new MenuPrincipal(usuarioActual);
+            menu.setVisible(true);
+        }
+
         this.dispose();
     }//GEN-LAST:event_VolverDisponibilidadActionPerformed
 

@@ -8,8 +8,11 @@ import Clases.CCheckInOutDAO;
 import Clases.ItemCombo;
 import javax.swing.JOptionPane;
 import Clases.ItemCombo;
+import Clases.CUsuario;
 
 public class FormCheckInOut extends javax.swing.JFrame {
+
+    private CUsuario usuarioActual;
 
     private int idReservaSeleccionada = 0;
 
@@ -30,6 +33,12 @@ public class FormCheckInOut extends javax.swing.JFrame {
         dao.cargarReservas(cbReservaCheck);
         dao.mostrarReservasCheck(tbReservasCheck);
     }
+
+    public FormCheckInOut(CUsuario usuario) {
+        this();
+        this.usuarioActual = usuario;
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -292,6 +301,11 @@ public class FormCheckInOut extends javax.swing.JFrame {
 
     private void btnVolverCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverCheckActionPerformed
         // TODO add your handling code here:
+        if (usuarioActual != null) {
+            MenuPrincipal menu = new MenuPrincipal(usuarioActual);
+            menu.setVisible(true);
+        }
+
         this.dispose();
     }//GEN-LAST:event_btnVolverCheckActionPerformed
 

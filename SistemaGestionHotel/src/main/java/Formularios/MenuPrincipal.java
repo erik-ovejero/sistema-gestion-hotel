@@ -1,8 +1,12 @@
 package Formularios;
 
 import Clases.CUsuario;
+import Clases.CAdministrador;
+import Clases.CRecepcionista;
 
 public class MenuPrincipal extends javax.swing.JFrame {
+
+    private CUsuario usuarioActual;
 
     /**
      * Creates new form MenuPrincipal
@@ -10,6 +14,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     public MenuPrincipal(CUsuario usuario) {
 
         initComponents();
+        this.usuarioActual = usuario;
         setLocationRelativeTo(null);
         setResizable(false);
 
@@ -17,13 +22,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 "<html><center>"
                 + "<b>Usuario:</b> " + usuario.getNombreUsuario()
                 + "<br>"
-                + "<b>Rol:</b> " + usuario.getRol()
+                + "<b>Rol:</b> " + usuario.obtenerTipoUsuario()
                 + "</center></html>");
         lblUsuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
-        if (usuario.getRol().equals("Administrador")) {
+        if (usuario instanceof CAdministrador) {
 
             configurarMenuAdministrador();
+
+        } else if (usuario instanceof CRecepcionista) {
+
+            configurarMenuRecepcionista();
 
         } else {
 
@@ -233,26 +242,30 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void btnEmitirFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmitirFacturaActionPerformed
         // TODO add your handling code here:
-        FormFacturas form = new FormFacturas();
+        FormFacturas form = new FormFacturas(usuarioActual);
         form.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnEmitirFacturaActionPerformed
 
     private void btnRegistrarPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarPagoActionPerformed
         // TODO add your handling code here:
-        FormPagos form = new FormPagos();
+        FormPagos form = new FormPagos(usuarioActual);
         form.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnRegistrarPagoActionPerformed
 
     private void btnAdministrarHabitacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdministrarHabitacionesActionPerformed
         // TODO add your handling code here:
-        FormHabitaciones form = new FormHabitaciones();
+        FormHabitaciones form = new FormHabitaciones(usuarioActual);
         form.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnAdministrarHabitacionesActionPerformed
 
     private void btnReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportesActionPerformed
         // TODO add your handling code here:
-        FormReportes form = new FormReportes();
+        FormReportes form = new FormReportes(usuarioActual);
         form.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnReportesActionPerformed
 
     private void btnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesionActionPerformed
@@ -264,34 +277,39 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void btnCrearReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearReservaActionPerformed
         // TODO add your handling code here:
-        FormReservas form = new FormReservas();
+        FormReservas form = new FormReservas(usuarioActual);
         form.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnCrearReservaActionPerformed
 
     private void btnRegistrarHuespedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarHuespedActionPerformed
         // TODO add your handling code here:
-        FormHuespedes form = new FormHuespedes();
+        FormHuespedes form = new FormHuespedes(usuarioActual);
         form.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnRegistrarHuespedActionPerformed
 
     private void btnGestionarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionarUsuariosActionPerformed
         // TODO add your handling code here:
-        FormUsuarios form = new FormUsuarios();
+        FormUsuarios form = new FormUsuarios(usuarioActual);
         form.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnGestionarUsuariosActionPerformed
 
     private void btnCheckInCheckOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCheckInCheckOutActionPerformed
         // TODO add your handling code here:
-        FormCheckInOut form = new FormCheckInOut();
+        FormCheckInOut form = new FormCheckInOut(usuarioActual);
         form.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnCheckInCheckOutActionPerformed
 
     private void btnConsultarDisponibilidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarDisponibilidadActionPerformed
         // TODO add your handling code here:
         FormConsultarDisponibilidad ventana =
-        new FormConsultarDisponibilidad();
+        new FormConsultarDisponibilidad(usuarioActual);
 
         ventana.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnConsultarDisponibilidadActionPerformed
 
     /**
@@ -351,6 +369,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         btnCrearReserva.setVisible(true);
         btnRegistrarPago.setVisible(true);
         btnEmitirFactura.setVisible(true);
+        btnCheckInCheckOut.setVisible(true);
+        btnConsultarDisponibilidad.setVisible(true);
 
         btnAdministrarHabitaciones.setVisible(true);
         btnGestionarUsuarios.setVisible(true);
@@ -362,6 +382,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         btnCrearReserva.setVisible(true);
         btnRegistrarPago.setVisible(true);
         btnEmitirFactura.setVisible(true);
+        btnCheckInCheckOut.setVisible(true);
+        btnConsultarDisponibilidad.setVisible(true);
 
         btnAdministrarHabitaciones.setVisible(false);
         btnGestionarUsuarios.setVisible(false);

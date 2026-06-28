@@ -6,12 +6,15 @@ package Formularios;
 
 import Clases.CHuesped;
 import Clases.CHuespedDAO;
+import Clases.CUsuario;
 
 /**
  *
  * @author Monke
  */
 public class FormHuespedes extends javax.swing.JFrame {
+
+    private CUsuario usuarioActual;
 
     /**
      * Creates new form FormHuespedes
@@ -27,6 +30,12 @@ public class FormHuespedes extends javax.swing.JFrame {
         CHuespedDAO dao = new CHuespedDAO();
         dao.mostrarHuespedes(tbHuespedes);
     }
+
+    public FormHuespedes(CUsuario usuario) {
+        this();
+        this.usuarioActual = usuario;
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -347,6 +356,11 @@ public class FormHuespedes extends javax.swing.JFrame {
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         // TODO add your handling code here:
+        if (usuarioActual != null) {
+            MenuPrincipal menu = new MenuPrincipal(usuarioActual);
+            menu.setVisible(true);
+        }
+
         this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
 

@@ -8,8 +8,11 @@ import Clases.CReserva;
 import Clases.CReservaDAO;
 import Clases.ItemCombo;
 import javax.swing.JOptionPane;
+import Clases.CUsuario;
 
 public class FormReservas extends javax.swing.JFrame {
+
+    private CUsuario usuarioActual;
 
     /**
      * Creates new form FormReservas
@@ -32,6 +35,12 @@ public class FormReservas extends javax.swing.JFrame {
     dao.cargarHabitacionesDisponibles(cbHabitacionReserva);
     dao.mostrarReservas(tbReservas);
     }
+
+    public FormReservas(CUsuario usuario) {
+        this();
+        this.usuarioActual = usuario;
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -364,6 +373,11 @@ public class FormReservas extends javax.swing.JFrame {
 
     private void btnVolverReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverReservaActionPerformed
         // TODO add your handling code here:
+        if (usuarioActual != null) {
+            MenuPrincipal menu = new MenuPrincipal(usuarioActual);
+            menu.setVisible(true);
+        }
+
         this.dispose();
     }//GEN-LAST:event_btnVolverReservaActionPerformed
 

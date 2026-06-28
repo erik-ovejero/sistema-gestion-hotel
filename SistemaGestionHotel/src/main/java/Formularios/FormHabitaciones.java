@@ -6,7 +6,10 @@ package Formularios;
 
 import Clases.CHabitacion;
 import Clases.CHabitacionDAO;
+import Clases.CUsuario;
 public class FormHabitaciones extends javax.swing.JFrame {
+
+    private CUsuario usuarioActual;
 
     /**
      * Creates new form FormHabitaciones
@@ -27,6 +30,12 @@ public class FormHabitaciones extends javax.swing.JFrame {
     CHabitacionDAO dao = new CHabitacionDAO();
     dao.mostrarHabitaciones(tbHabitacion);
     }
+
+    public FormHabitaciones(CUsuario usuario) {
+        this();
+        this.usuarioActual = usuario;
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -342,6 +351,11 @@ public class FormHabitaciones extends javax.swing.JFrame {
 
     private void btnVolverHabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverHabitacionActionPerformed
         // TODO add your handling code here:
+        if (usuarioActual != null) {
+            MenuPrincipal menu = new MenuPrincipal(usuarioActual);
+            menu.setVisible(true);
+        }
+
         this.dispose();
     }//GEN-LAST:event_btnVolverHabitacionActionPerformed
 

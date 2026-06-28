@@ -28,12 +28,18 @@ public class UsuarioDAO {
             ResultSet rs = ps.executeQuery();
 
             if (rs.next()) {
-                usuario = new CUsuario(
-                        rs.getInt("id_usuario"),
-                        rs.getString("nombre_usuario"),
-                        rs.getString("rol"),
-                        rs.getString("estado")
-                );
+                int idUsuario = rs.getInt("id_usuario");
+                String usuarioBD = rs.getString("nombre_usuario");
+                String rol = rs.getString("rol");
+                String estado = rs.getString("estado");
+
+                if (rol.equalsIgnoreCase("Administrador")) {
+                    usuario = new CAdministrador(idUsuario, usuarioBD, rol, estado);
+                } else if (rol.equalsIgnoreCase("Recepcionista")) {
+                    usuario = new CRecepcionista(idUsuario, usuarioBD, rol, estado);
+                } else {
+                    usuario = new CUsuario(idUsuario, usuarioBD, rol, estado);
+                }
             }
 
             rs.close();
