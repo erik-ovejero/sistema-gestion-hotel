@@ -42,7 +42,6 @@ public class FormFacturas extends javax.swing.JFrame {
         this.usuarioActual = usuario;
     }
 
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -337,6 +336,7 @@ public class FormFacturas extends javax.swing.JFrame {
             CFacturaDAO dao = new CFacturaDAO();
             dao.emitirFactura(factura);
             dao.mostrarFacturas(tbFacturas);
+            dao.cargarReservasPagadas(cbReservaFactura);
 
             limpiarCamposFactura();
 
@@ -386,6 +386,7 @@ public class FormFacturas extends javax.swing.JFrame {
             CFacturaDAO dao = new CFacturaDAO();
             dao.modificarFactura(factura);
             dao.mostrarFacturas(tbFacturas);
+            dao.cargarReservasPagadas(cbReservaFactura);
 
             limpiarCamposFactura();
 
@@ -414,6 +415,7 @@ public class FormFacturas extends javax.swing.JFrame {
 
                 dao.eliminarFactura(Integer.parseInt(txtIdFactura.getText()));
                 dao.mostrarFacturas(tbFacturas);
+                dao.cargarReservasPagadas(cbReservaFactura);
 
                 limpiarCamposFactura();
             }
@@ -509,7 +511,7 @@ public class FormFacturas extends javax.swing.JFrame {
     private javax.swing.JTextField txtIdFactura;
     private javax.swing.JTextField txtImporteTotal;
     // End of variables declaration//GEN-END:variables
-    
+
     private void seleccionarItemComboPorId(javax.swing.JComboBox combo, int id) {
 
         for (int i = 0; i < combo.getItemCount(); i++) {
@@ -521,6 +523,7 @@ public class FormFacturas extends javax.swing.JFrame {
             }
         }
     }
+
     private void limpiarCamposFactura() {
         txtIdFactura.setText("");
         txtImporteTotal.setText("");

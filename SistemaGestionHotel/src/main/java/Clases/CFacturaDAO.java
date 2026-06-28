@@ -18,12 +18,21 @@ public class CFacturaDAO {
         String sql = "SELECT "
                 + "r.id_reserva, "
                 + "CONCAT('Reserva ', r.id_reserva, ' - ', h.nombre, ' ', h.apellido, "
-                + "' - Hab. ', hb.numero, ' - Pago $', p.monto) AS descripcion "
+                + "' - Total $', ROUND((DATEDIFF(r.fecha_checkout, r.fecha_checkin) * hb.precio), 2)) AS descripcion "
                 + "FROM reservas r "
                 + "INNER JOIN huespedes h ON r.id_huesped = h.id_huesped "
                 + "INNER JOIN habitaciones hb ON r.id_habitacion = hb.id_habitacion "
-                + "INNER JOIN pagos p ON r.id_reserva = p.id_reserva "
-                + "WHERE p.estado_pago = 'Aprobado'";
+                + "LEFT JOIN pagos p ON r.id_reserva = p.id_reserva "
+                + "WHERE r.estado <> 'Cancelada' "
+                + "AND r.id_reserva NOT IN ( "
+                + "    SELECT id_reserva "
+                + "    FROM facturas "
+                + "    WHERE estado_factura <> 'Anulada' "
+                + ") "
+                + "GROUP BY r.id_reserva, h.nombre, h.apellido, r.fecha_checkin, r.fecha_checkout, hb.precio "
+                + "HAVING ((DATEDIFF(r.fecha_checkout, r.fecha_checkin) * hb.precio) "
+                + "- IFNULL(SUM(CASE WHEN p.estado_pago = 'Aprobado' THEN p.monto ELSE 0 END), 0)) <= 0 "
+                + "ORDER BY r.id_reserva DESC";
 
         try {
             combo.removeAllItems();
@@ -154,6 +163,12 @@ public class CFacturaDAO {
 
     public void emitirFactura(CFactura factura) {
 
+        if (existeFacturaEmitida(factura.getIdReserva(), 0)) {
+            JOptionPane.showMessageDialog(null,
+                    "La reserva seleccionada ya posee una factura emitida.");
+            return;
+        }
+
         CConexion conexion = new CConexion();
         Connection con = conexion.estableceConexion();
 
@@ -184,6 +199,12 @@ public class CFacturaDAO {
     }
 
     public void modificarFactura(CFactura factura) {
+
+        if (existeFacturaEmitida(factura.getIdReserva(), factura.getIdFactura())) {
+            JOptionPane.showMessageDialog(null,
+                    "Ya existe otra factura emitida para esa reserva.");
+            return;
+        }
 
         CConexion conexion = new CConexion();
         Connection con = conexion.estableceConexion();
@@ -241,5 +262,46 @@ public class CFacturaDAO {
             JOptionPane.showMessageDialog(null,
                     "Error al eliminar factura: " + e.getMessage());
         }
+    }
+
+    private boolean existeFacturaEmitida(int idReserva, int idFacturaExcluir) {
+
+        CConexion conexion = new CConexion();
+        Connection con = conexion.estableceConexion();
+
+        String sql = "SELECT COUNT(*) AS cantidad "
+                + "FROM facturas "
+                + "WHERE id_reserva = ? "
+                + "AND estado_factura <> 'Anulada' "
+                + "AND id_factura <> ?";
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+
+            ps.setInt(1, idReserva);
+            ps.setInt(2, idFacturaExcluir);
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                int cantidad = rs.getInt("cantidad");
+
+                rs.close();
+                ps.close();
+                conexion.cerrarConexion();
+
+                return cantidad > 0;
+            }
+
+            rs.close();
+            ps.close();
+            conexion.cerrarConexion();
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,
+                    "Error al validar factura existente: " + e.getMessage());
+        }
+
+        return false;
     }
 }
